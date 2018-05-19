@@ -13,8 +13,8 @@ class Location(models.Model):
 
 class Meeting(models.Model):
 	time = models.DateTimeField()
-	Location = models.ForeignKey(Location, null = True, blank=True, on_delete= models.SET_NULL)
-	users = models.ManyToManyField(User)
+	location = models.ForeignKey(Location, on_delete= models.CASCADE)
+	user = models.ManyToManyField(User)
 
 
 
@@ -23,5 +23,5 @@ class UserHobby(models.Model):
 	hobbies = models.ManyToManyField(Hobby)
 
 class UserProfile(models.Model):
-	user = models.OneToOneField(User,  null=True, blank=True, on_delete= models.SET_NULL)
+	user = models.OneToOneField(User, on_delete= models.CASCADE)
 	profile_image = models.ImageField(upload_to='', blank=True, null=True)
