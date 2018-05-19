@@ -11,6 +11,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+    def get_users(request):
+        print(request.method)
+
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
