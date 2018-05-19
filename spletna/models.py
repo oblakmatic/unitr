@@ -12,7 +12,7 @@ class Location(models.Model):
 	address = models.CharField(max_length=100)
 
 class Meeting(models.Model):
-	time = models.DateField()
+	time = models.DateTimeField()
 	Location = models.ForeignKey(Location, null = True, blank=True, on_delete= models.SET_NULL)
 	users = models.ManyToManyField(User)
 
