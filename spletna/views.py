@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from spletna.serializers import UserSerializer, GroupSerializer
+from .models import *
+from spletna.serializers import UserSerializer, GroupSerializer, UserProfileSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,3 +18,10 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
