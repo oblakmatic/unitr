@@ -19,6 +19,9 @@ class UserResource(ModelResource):
         queryset = User.objects.all()
         resource_name = 'user'
         authorization = Authorization()
+        filtering = {
+            'username' : ALL,
+        }
 
 class MeetingResource(ModelResource):
     #name = fields.ForeignKey(Location, full=True, attribute='name')
