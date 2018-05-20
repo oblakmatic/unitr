@@ -8,6 +8,10 @@ from django.urls import path, re_path, include
 from spletna.resources import *
 from tastypie.api import Api
 from spletna import socket
+from multiprocessing import Process
+import csv
+from recommender_system import *
+
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -17,7 +21,9 @@ router.register(r'userprofiles', views.UserProfileViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 
-socket.naredi_streznik()
+
+p = Process(target=socket.naredi_streznik)
+p.start()
 
 location_resource = LocationResource()
 meeting_resource = MeetingResource()
@@ -33,4 +39,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'api/', include(v1_api.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

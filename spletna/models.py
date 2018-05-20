@@ -21,10 +21,11 @@ class UserProfile(models.Model):
 	#user = models.OneToOneField(User, on_delete= models.CASCADE)
 	name = models.CharField(max_length=100)
 	username = models.CharField(max_length=100)
+	interests_calc = models.CharField(max_length = 60000)
 	profile_image = models.ImageField(upload_to='', blank=True, null=True)
 	interests = models.ManyToManyField(Interest, related_name="interests")
-	interests_calc = models.ManyToManyField(Interest, related_name="interests_calc")
-
+	#interests_calc = models.ManyToManyField(Interest, related_name="interests_calc", blank = True)
+	
 
 
 class Meeting(models.Model):
@@ -35,7 +36,8 @@ class Meeting(models.Model):
 
 
 
-class UserHobby(models.Model):
+'''class UserHobby(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete= models.SET_NULL)
 	hobbies = models.ManyToManyField(Hobby)
 
+'''
