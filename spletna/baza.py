@@ -18,9 +18,27 @@ def baza(neki):
     lokacija = Location(name="Union", longitude=1.1,latitude=36.1, address = "Verjameva ulica 2")
     lokacija.save()
 
-    userprof = UserProfile(name="Neko ime")
-    userprof.save()
 
+
+    userprof = UserProfile(username="thelegend27", name ="Jože Gorišek")
+    userprof.save()
+    userprof2 = UserProfile(username="dragonslayer", name ="Matic Oblak")
+    userprof2.save()
+
+
+    inte = Interest( name="Swimming", value = 0.52)
+    inte.save()
+    userprof.interests.add(inte)
+    inte = Interest(name="Cooking", value = 0.22)
+    inte.save()
+    userprof.interests.add(inte)
+    inte = Interest( name="Driving", value = 0.82)
+    inte.save()
+    userprof.interests.add(inte)
+    inte = Interest(name="Driving", value = 0.12)
+    inte.save()
+    userprof2.interests.add(inte)
+    
     meeting = Meeting(location = lokacija, timestamp = datetime.date.today())
     
     meeting.save()

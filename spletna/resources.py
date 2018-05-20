@@ -12,15 +12,22 @@ class LocationResource(ModelResource):
         resource_name = 'location'
         authorization = Authorization()
 
+class InterestResource(ModelResource):
+    class Meta:
+        queryset = Interest.objects.all()
+        resource_name = 'interest'
+        authorization = Authorization()
+        excludes = ['id']
+
 class UserResource(ModelResource):
 
-    
+    interest = fields.ToManyField(InterestResource,'interests',full=True)
     class Meta:
         queryset = UserProfile.objects.all()
-        resource_name = 'users'
+        resource_name = 'user'
         authorization = Authorization()
-        filtering = {
-            'name' : ALL,
+        filtering = {   
+            'username' : ALL,
         }
 
 class MeetingResource(ModelResource):
@@ -38,4 +45,3 @@ class MeetingResource(ModelResource):
         resource_name = 'meeting'
         authorization = Authorization()
 
-    

@@ -24,6 +24,7 @@ v1_api = Api(api_name='v1')
 v1_api.register(LocationResource())
 v1_api.register(MeetingResource())
 v1_api.register(UserResource())
+v1_api.register(InterestResource())
 
 urlpatterns = [
     url(r'^', include(router.urls)),

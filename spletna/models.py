@@ -11,11 +11,22 @@ class Location(models.Model):
 	latitude = models.FloatField()
 	address = models.CharField(max_length=100)
 
+class Interest(models.Model):
+
+	#user = models.ForeignKey(UserProfile, on_delete = models.CASCADE)
+	name = models.CharField(max_length=100)
+	value = models.FloatField(default = 0.0)
+
 class UserProfile(models.Model):
 	#user = models.OneToOneField(User, on_delete= models.CASCADE)
 	name = models.CharField(max_length=100)
+	username = models.CharField(max_length=100)
 	profile_image = models.ImageField(upload_to='', blank=True, null=True)
-	
+	interests = models.ManyToManyField(Interest, related_name="interests")
+	interests_calc = models.ManyToManyField(Interest, related_name="interests_calc")
+
+
+
 class Meeting(models.Model):
 	
 	location = models.ForeignKey(Location, on_delete= models.CASCADE)
