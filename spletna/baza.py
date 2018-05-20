@@ -18,8 +18,11 @@ def baza(neki):
     lokacija = Location(name="Union", longitude=1.1,latitude=36.1, address = "Verjameva ulica 2")
     lokacija.save()
 
-    meeting = Meeting(location = lokacija, time = datetime.date.today())
-    meeting.save()
+    userprof = UserProfile(name="Neko ime")
+    userprof.save()
 
-    meeting.user.add(user1)
-    meeting.user.add(user2)
+    meeting = Meeting(location = lokacija, timestamp = datetime.date.today())
+    
+    meeting.save()
+    meeting.users.add(userprof)
+

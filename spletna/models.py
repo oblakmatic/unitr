@@ -11,10 +11,16 @@ class Location(models.Model):
 	latitude = models.FloatField()
 	address = models.CharField(max_length=100)
 
+class UserProfile(models.Model):
+	#user = models.OneToOneField(User, on_delete= models.CASCADE)
+	name = models.CharField(max_length=100)
+	profile_image = models.ImageField(upload_to='', blank=True, null=True)
+	
 class Meeting(models.Model):
-	time = models.DateTimeField()
+	
 	location = models.ForeignKey(Location, on_delete= models.CASCADE)
-	user = models.ManyToManyField(User)
+	timestamp = models.DateTimeField()
+	users = models.ManyToManyField(UserProfile)
 
 
 
@@ -22,6 +28,3 @@ class UserHobby(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete= models.SET_NULL)
 	hobbies = models.ManyToManyField(Hobby)
 
-class UserProfile(models.Model):
-	user = models.OneToOneField(User, on_delete= models.CASCADE)
-	profile_image = models.ImageField(upload_to='', blank=True, null=True)

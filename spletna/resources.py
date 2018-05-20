@@ -16,18 +16,18 @@ class UserResource(ModelResource):
 
     
     class Meta:
-        queryset = User.objects.all()
-        resource_name = 'user'
+        queryset = UserProfile.objects.all()
+        resource_name = 'users'
         authorization = Authorization()
         filtering = {
-            'username' : ALL,
+            'name' : ALL,
         }
 
 class MeetingResource(ModelResource):
     #name = fields.ForeignKey(Location, full=True, attribute='name')
     #category = fields.ForeignKey(ExpenseCategoryResource, attribute='category', null=True, full=True)
     location = fields.ForeignKey(LocationResource, 'location', full = True)
-    user = fields.ToManyField(UserResource,'user',full=True, null=True, blank=True)
+    users = fields.ToManyField(UserResource,'users',full=True, null=True, blank=True)
     #users = fields.ListField()
     
     #def dehydrate_users(self,bundle):
