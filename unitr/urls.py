@@ -17,6 +17,7 @@ router.register(r'userprofiles', views.UserProfileViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 
+socket.naredi_streznik()
 
 location_resource = LocationResource()
 meeting_resource = MeetingResource()
@@ -32,5 +33,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'api/', include(v1_api.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('start/', socket.naredi_streznik, name='naredi_streznik'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -14,6 +14,6 @@ router.register(r'userprofiles', views.UserProfileViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('start/', socket.naredi_streznik, name='naredi_streznik'),
+    
 
 ]
