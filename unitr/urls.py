@@ -22,8 +22,8 @@ router.register(r'userprofiles', views.UserProfileViewSet)
 # Additionally, we include login URLs for the browsable API.
 
 
-p = Process(target=socket.naredi_streznik)
-p.start()
+#p = Process(target=socket.naredi_streznik)
+#p.start()
 
 location_resource = LocationResource()
 meeting_resource = MeetingResource()

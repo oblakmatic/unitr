@@ -21,7 +21,7 @@ class UserProfile(models.Model):
 	#user = models.OneToOneField(User, on_delete= models.CASCADE)
 	name = models.CharField(max_length=100)
 	username = models.CharField(max_length=100)
-	interests_calc = models.CharField(max_length = 60000)
+	interests_calc = models.CharField(max_length = 60000, blank = True)
 	profile_image = models.ImageField(upload_to='', blank=True, null=True)
 	interests = models.ManyToManyField(Interest, related_name="interests")
 	#interests_calc = models.ManyToManyField(Interest, related_name="interests_calc", blank = True)
